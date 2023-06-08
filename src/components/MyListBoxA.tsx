@@ -18,10 +18,6 @@ const people = [
   { id: 10, name: 'Emil Schaefer' },
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function MyListBoxA() {
   const [selectedPeople, setSelectedPeople] = useState([people[0], people[1]])
 
@@ -32,13 +28,15 @@ export default function MyListBoxA() {
           {selectedPeople.map((person) => person.name).join(', ')}
         </Listbox.Button>
       </div>
-      <Listbox.Options className='absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base'>
-        {people.map((person) => (
-          <Listbox.Option key={person.id} value={person}>
-            {person.name}
-          </Listbox.Option>
-        ))}
-      </Listbox.Options>
+      <div className='relative mt-1 w-80'>
+        <Listbox.Options className='border p-3 absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base cursor-pointerur'>
+          {people.map((person) => (
+            <Listbox.Option key={person.id} value={person}>
+              {person.name}
+            </Listbox.Option>
+          ))}
+        </Listbox.Options>
+      </div>
     </Listbox>
   )
 }
