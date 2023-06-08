@@ -28,10 +28,17 @@ export default function MyListBoxA() {
           {selectedPeople.map((person) => person.name).join(', ')}
         </Listbox.Button>
       </div>
-      <div className='relative mt-1 w-80'>
-        <Listbox.Options className='border p-3 absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base cursor-pointerur'>
+      <div className='relative my-1 w-80'>
+        <Listbox.Options className='border p-3 absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base'>
           {people.map((person) => (
-            <Listbox.Option key={person.id} value={person}>
+            <Listbox.Option
+              key={person.id}
+              value={person}
+              className={({ active }) =>
+                `${active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'}
+                          cursor-default select-none relative py-2 pl-10 pr-4`
+              }
+            >
               {person.name}
             </Listbox.Option>
           ))}
